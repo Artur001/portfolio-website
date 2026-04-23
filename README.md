@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Artur's Portfolio Hub 🚀
 
-## Getting Started
+Willkommen in meinem persönlichen Portfolio-Repository! Diese Website dient als meine digitale Visitenkarte. Sie zeigt meine aktuellen Projekte, meine Fähigkeiten im Bereich der Applikationsentwicklung und ein bisschen mehr über mich.
 
-First, run the development server:
+## 🌟 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Modernes UI/UX-Design:** Dunkles Theme, Glassmorphism-Effekte und flüssige Übergänge.
+- **Responsive:** Optimiert für Smartphones, Tablets und Desktops.
+- **Projekt-Showcase:** Übersichtliche Darstellung meiner besten Projekte mit Direktlinks zum Quellcode.
+- **Dynamische Animationen:** Subtile Einblendungen und Hover-Effekte dank Framer Motion.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Dieses Projekt wurde mit modernsten Web-Technologien entwickelt, um höchste Performance und Skalierbarkeit zu gewährleisten:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Framework:** [Next.js](https://nextjs.org/) (React)
+- **Sprache:** TypeScript
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Animationen:** [Framer Motion](https://www.framer.com/motion/)
+- **Datenbank:** Supabase (PostgreSQL)
 
-## Learn More
+## 🚀 Lokale Installation
 
-To learn more about Next.js, take a look at the following resources:
+Möchtest du dir den Code lokal ansehen oder daran herumbasteln? So startest du das Projekt bei dir:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Repository klonen:**
+   ```bash
+   git clone https://github.com/Artur001/portfolio-website.git
+   cd portfolio-website
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. **Abhängigkeiten installieren:**
+   ```bash
+   npm install
+   ```
 
-## Deploy on Vercel
+3. **Entwicklungsserver starten:**
+   ```bash
+   npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Öffne [http://localhost:3000](http://localhost:3000) in deinem Browser.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📫 Kontakt
+
+Ich bin immer offen für spannende Projekte, neue Kontakte und aktuell auf der Suche nach einem **Software Engineering Praktikum** ab Sommer 2026.
+
+- **Email:** [bytyqiartur00@gmail.com](mailto:bytyqiartur00@gmail.com)
+- **LinkedIn:** [Artur Bytyqi](https://www.linkedin.com/in/artur-bytyqi-0982212a2)
+- **GitHub:** [@Artur001](https://github.com/Artur001)
+
+---
+*Entwickelt mit ❤️ und viel Kaffee von Artur Bytyqi.*

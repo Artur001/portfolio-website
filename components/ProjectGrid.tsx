@@ -1,3 +1,4 @@
+import { connection } from "next/server";
 import { supabase } from "@/lib/supabase";
 import { ProjectCard, Project } from "./ProjectCard";
 
@@ -6,6 +7,8 @@ export async function ProjectGrid() {
   let fetchError = false;
 
   try {
+    await connection();
+
     const { data: projects, error } = await supabase
       .from("projects")
       .select("*")
@@ -17,7 +20,7 @@ export async function ProjectGrid() {
     } else if (projects) {
       displayProjects = projects;
     }
-  } catch (err) {
+  } catch {
     console.warn("Supabase configuration missing or network error.");
     fetchError = true;
   }

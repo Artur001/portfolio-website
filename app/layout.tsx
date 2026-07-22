@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { siteName, siteUrl, socialImage } from "@/lib/site";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -14,8 +15,53 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "IMS Skill & Portfolio Hub | Artur Bytyqi",
-  description: "Portfolio von Artur Bytyqi, einem aufstrebenden Software Engineering Praktikanten.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Artur Bytyqi — Applikationsentwicklung",
+    template: "%s — Artur Bytyqi",
+  },
+  description:
+    "Artur OS: das interaktive Portfolio von Artur Bytyqi mit Projekten in Next.js, TypeScript, Python, Flask und SQL.",
+  applicationName: "Artur OS — Portfolio",
+  authors: [{ name: "Artur Bytyqi" }],
+  creator: "Artur Bytyqi",
+  alternates: {
+    canonical: "/",
+  },
+  keywords: [
+    "Artur Bytyqi",
+    "Applikationsentwicklung",
+    "Praxisjahr",
+    "Next.js",
+    "TypeScript",
+    "Python",
+    "Flask",
+    "Schweiz",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "de_CH",
+    siteName,
+    title: "Artur Bytyqi — Applikationsentwicklung",
+    description:
+      "Artur OS: Projekte, Ausbildung und Lebenslauf von Artur Bytyqi, IMS-Schüler mit Schwerpunkt Applikationsentwicklung.",
+    url: "/",
+    images: [socialImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Artur Bytyqi — Applikationsentwicklung",
+    description:
+      "Projekte, Ausbildung und Lebenslauf von Artur Bytyqi.",
+    images: [socialImage],
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#d6e4f2",
 };
 
 export default function RootLayout({

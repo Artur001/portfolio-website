@@ -1,0 +1,3020 @@
+.portfolioOS {
+  --os-ink: #16181f;
+  --os-muted: #676d7b;
+  --os-surface: rgba(250, 251, 255, 0.9);
+  --os-line: rgba(28, 31, 40, 0.12);
+  --os-accent: #6259ff;
+  --os-accent-deep: #4438d8;
+  --os-cyan: #66d7ef;
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 38rem;
+  overflow: hidden;
+  color: var(--os-ink);
+  background: #dfe9f7;
+  font-family: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
+}
+
+.skipLink {
+  position: fixed;
+  z-index: 10000;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background: #fff;
+  color: #111;
+  font-weight: 750;
+  transform: translateY(-180%);
+}
+
+.skipLink:focus {
+  transform: translateY(0);
+}
+
+.desktopShell,
+.mobileShell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.desktopShell {
+  background:
+    radial-gradient(circle at 72% 12%, rgba(255, 255, 255, 0.82), transparent 21rem),
+    radial-gradient(circle at 56% 56%, rgba(170, 210, 255, 0.58), transparent 30rem),
+    linear-gradient(135deg, #e5eef8 0%, #c9d9ed 46%, #dce2f3 100%);
+}
+
+.desktopShell::before,
+.desktopShell::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+  filter: blur(2px);
+  transform: rotate(-16deg);
+}
+
+.desktopShell::before {
+  width: 47vw;
+  height: 78vh;
+  top: -29vh;
+  left: 31vw;
+  border: 8.5vw solid rgba(96, 82, 245, 0.72);
+  border-radius: 48% 52% 43% 57%;
+  box-shadow: 0 0 8rem rgba(89, 73, 224, 0.26);
+}
+
+.desktopShell::after {
+  width: 34vw;
+  height: 62vh;
+  right: -7vw;
+  bottom: -31vh;
+  border: 7vw solid rgba(58, 197, 229, 0.52);
+  border-radius: 52% 48% 56% 44%;
+  transform: rotate(24deg);
+}
+
+.wallpaperGlow {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 5rem 5rem;
+  mask-image: linear-gradient(to bottom, black, transparent 70%);
+  pointer-events: none;
+}
+
+.desktopStatus {
+  position: absolute;
+  z-index: 3;
+  top: 1.2rem;
+  right: 1.4rem;
+  left: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgba(24, 28, 40, 0.72);
+  font-family: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.desktopStatus > div {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+}
+
+.desktopStatus strong {
+  color: var(--os-ink);
+  font-size: 0.72rem;
+}
+
+.desktopStatus p {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0;
+}
+
+.desktopStatus p i,
+.availabilityPill i,
+.startContact i,
+.mobileAvailability i {
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 50%;
+  background: #28a867;
+  box-shadow: 0 0 0 0.25rem rgba(40, 168, 103, 0.12);
+}
+
+.desktopIcons {
+  position: absolute;
+  z-index: 4;
+  top: 4.8rem;
+  left: 1.25rem;
+  display: grid;
+  width: 6.5rem;
+  gap: 0.55rem;
+}
+
+.desktopIcons button,
+.startGrid button,
+.mobileGrid button,
+.mobileDock button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.desktopIcons button {
+  display: grid;
+  min-height: 6.15rem;
+  padding: 0.5rem 0.35rem;
+  place-items: center;
+  align-content: center;
+  gap: 0.45rem;
+  border: 1px solid transparent;
+  border-radius: 0.75rem;
+  color: #20232c;
+  font-size: 0.72rem;
+  font-weight: 650;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.desktopIcons button:hover,
+.desktopIcons button:focus-visible {
+  border-color: rgba(255, 255, 255, 0.54);
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.appGlyph {
+  display: grid;
+  width: 3.35rem;
+  height: 3.35rem;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.58);
+  border-radius: 1.02rem;
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 0.5rem 1rem rgba(29, 36, 71, 0.2);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-shadow: none;
+}
+
+.appGlyphCompact {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.62rem;
+  font-size: 0.58rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32), 0 0.25rem 0.6rem rgba(29, 36, 71, 0.15);
+}
+
+.appGlyph_about {
+  background: linear-gradient(145deg, #766cff, #4636d5);
+}
+
+.appGlyph_projects {
+  background: linear-gradient(145deg, #23b6d8, #14749c);
+}
+
+.appGlyph_certificates {
+  background: linear-gradient(145deg, #ffad5c, #e96756);
+}
+
+.appGlyph_resume {
+  background: linear-gradient(145deg, #4d566f, #242938);
+}
+
+.appGlyph_contact {
+  background: linear-gradient(145deg, #38c98a, #168864);
+}
+
+.desktopMessage {
+  position: absolute;
+  z-index: 1;
+  right: 2rem;
+  bottom: 6.6rem;
+  color: rgba(29, 34, 46, 0.45);
+  text-align: right;
+}
+
+.desktopMessage span {
+  font-family: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.desktopMessage strong {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  font-weight: 620;
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+}
+
+.windowLayer {
+  position: absolute;
+  z-index: 5;
+  inset: 3.25rem 0 4.7rem;
+  pointer-events: none;
+}
+
+.window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  width: min(58rem, calc(100vw - 13rem));
+  height: min(42rem, calc(100vh - 9.5rem));
+  overflow: hidden;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 1.25rem;
+  background: var(--os-surface);
+  box-shadow: 0 1.8rem 5rem rgba(30, 40, 67, 0.24), 0 0.25rem 0.75rem rgba(30, 40, 67, 0.12);
+  transform: translate(-48%, -50%);
+  backdrop-filter: blur(28px) saturate(1.16);
+  pointer-events: auto;
+  opacity: 0.96;
+  transition: opacity 160ms ease, box-shadow 160ms ease, transform 220ms ease;
+}
+
+.window_about {
+  width: min(51rem, calc(100vw - 14rem));
+  height: min(38rem, calc(100vh - 10rem));
+  transform: translate(-52%, -49%);
+}
+
+.window_projects {
+  width: min(68rem, calc(100vw - 12rem));
+  transform: translate(-47%, -50%);
+}
+
+.window_certificates {
+  width: min(62rem, calc(100vw - 13rem));
+  height: min(35rem, calc(100vh - 10rem));
+  transform: translate(-51%, -51%);
+}
+
+.window_resume {
+  width: min(61rem, calc(100vw - 13rem));
+  height: min(38rem, calc(100vh - 10rem));
+  transform: translate(-49%, -48%);
+}
+
+.window_contact {
+  width: min(48rem, calc(100vw - 15rem));
+  height: min(34rem, calc(100vh - 11rem));
+  transform: translate(-50%, -50%);
+}
+
+.windowActive {
+  opacity: 1;
+  box-shadow: 0 2rem 6rem rgba(25, 34, 61, 0.3), 0 0.25rem 0.85rem rgba(30, 40, 67, 0.13);
+}
+
+.windowMinimized {
+  display: none;
+}
+
+.windowBar {
+  display: flex;
+  min-height: 3.25rem;
+  padding: 0 0.45rem 0 0.7rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--os-line);
+  background: rgba(255, 255, 255, 0.52);
+  user-select: none;
+}
+
+.windowBar > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 0.62rem;
+  min-width: 0;
+}
+
+.windowBar > div:first-child > span:not(.appGlyph) {
+  font-size: 0.79rem;
+  font-weight: 750;
+}
+
+.windowBar small {
+  overflow: hidden;
+  padding-left: 0.62rem;
+  border-left: 1px solid var(--os-line);
+  color: var(--os-muted);
+  font-family: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  font-size: 0.58rem;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.windowControls {
+  display: flex;
+  align-self: stretch;
+}
+
+.windowControls button {
+  display: grid;
+  width: 2.7rem;
+  border: 0;
+  border-radius: 0.55rem;
+  background: transparent;
+  color: #4b4f59;
+  cursor: pointer;
+  place-items: center;
+  font-size: 1rem;
+}
+
+.windowControls button:hover {
+  background: rgba(25, 28, 36, 0.07);
+}
+
+.windowControls button:last-child:hover {
+  background: #e35059;
+  color: #fff;
+}
+
+.windowBody {
+  flex: 1;
+  overflow: auto;
+  scrollbar-color: rgba(71, 75, 89, 0.28) transparent;
+}
+
+.windowBody h2,
+.windowBody h3,
+.windowBody p {
+  margin-top: 0;
+}
+
+.aboutApp {
+  display: grid;
+  min-height: 100%;
+  grid-template-columns: 15.5rem minmax(0, 1fr);
+}
+
+.profilePanel {
+  display: flex;
+  padding: 1.2rem;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.2rem;
+  border-right: 1px solid var(--os-line);
+  background: linear-gradient(165deg, rgba(99, 89, 255, 0.1), rgba(102, 215, 239, 0.07));
+}
+
+.profileImage {
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  border-radius: 1rem;
+  background: #cad3df;
+}
+
+.profileImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.88) contrast(1.02);
+}
+
+.profilePanel h2 {
+  margin-bottom: 0.3rem;
+  font-size: 1.65rem;
+  letter-spacing: -0.055em;
+}
+
+.profilePanel p {
+  margin: 0;
+  color: var(--os-muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.location,
+.kicker {
+  color: var(--os-accent-deep);
+  font-family: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  font-size: 0.61rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.aboutCopy {
+  padding: clamp(1.6rem, 3vw, 2.6rem);
+}
+
+.availabilityPill {
+  display: inline-flex;
+  padding: 0.55rem 0.72rem;
+  align-items: center;
+  gap: 0.55rem;
+  border: 1px solid rgba(39, 157, 99, 0.2);
+  border-radius: 999px;
+  background: rgba(56, 190, 126, 0.08);
+  color: #19734b;
+  font-size: 0.67rem;
+  font-weight: 700;
+}
+
+.leadCopy {
+  margin: 1.35rem 0 0.8rem;
+  color: #1a1c23;
+  font-size: clamp(1.25rem, 2vw, 1.7rem);
+  font-weight: 620;
+  line-height: 1.22;
+  letter-spacing: -0.045em;
+}
+
+.aboutCopy > p:not(.leadCopy) {
+  color: #595e6b;
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+
+.factGrid {
+  display: grid;
+  margin-top: 1.4rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--os-line);
+  border-left: 1px solid var(--os-line);
+}
+
+.factGrid div {
+  display: grid;
+  padding: 0.8rem;
+  gap: 0.25rem;
+  border-right: 1px solid var(--os-line);
+  border-bottom: 1px solid var(--os-line);
+}
+
+.factGrid span {
+  color: var(--os-muted);
+  font-family: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  font-size: 0.56rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.factGrid strong {
+  font-size: 0.76rem;
+}
+
+.skillRow,
+.techRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.skillRow {
+  margin-top: 1rem;
+}
+
+.skillRow span,
+.techRow span {
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--os-line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.54);
+  color: #4f5360;
+  font-family: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  font-size: 0.55rem;
+  font-weight: 650;
+}
+
+.projectsApp,
+.certificatesApp,
+.resumeApp,
+.contactApp {
+  min-height: 100%;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+.appContentHeader,
+.resumeIntro {
+  display: flex;
+  margin-bottom: 1.5rem;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.appContentHeader h2,
+.resumeIntro h2,
+.contactHero h2 {
+  max-width: 18ch;
+  margin: 0.45rem 0 0;
+  font-size: clamp(1.55rem, 3vw, 2.35rem);
+  font-weight: 650;
+  line-height: 1.04;
+  letter-spacing: -0.06em;
+}
+
+.countBadge {
+  flex: 0 0 auto;
+  padding: 0.55rem 0.72rem;
+  border: 1px solid var(--os-line);
+  border-radius: 999px;
+  color: var(--os-muted);
+  font-family: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.projectList {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.projectCard {
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: minmax(14rem, 0.72fr) minmax(0, 1.28fr);
+  border: 1px solid var(--os-line);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.projectImage,
+.terminalPreview {
+  min-height: 13.5rem;
+  background: #101218;
+}
+
+.projectImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.terminalPreview {
+  display: flex;
+  padding: 1.2rem;
+  flex-direction: column;
+  justify-content: center;
+  color: #c7d4d9;
+  font-family: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+}
+
+.terminalPreview > span {
+  margin-bottom: 1.4rem;
+  color: #63d7ed;
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+}
+
+.terminalPreview strong {
+  font-size: 0.9rem;
+}
+
+.terminalPreview p {
+  margin: 0.7rem 0 0.25rem;
+  color: #7fe3a3;
+  font-size: 0.64rem;
+}
+
+.terminalPreview i {
+  color: #747c88;
+  font-size: 0.56rem;
+  font-style: normal;
+  line-height: 1.5;
+}
+
+.projectCardCopy {
+  display: flex;
+  padding: 1.25rem 1.4rem;
+  flex-direction: column;
+}
+
+.projectCardMeta {
+  display: flex;
+  gap: 0.7rem;
+  color: var(--os-muted);
+  font-family: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  font-size: 0.54rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.projectCardMeta span + span {
+  padding-left: 0.7rem;
+  border-left: 1px solid var(--os-line);
+}
+
+.projectCard h3 {
+  margin: 0.65rem 0 0.45rem;
+  font-size: 1.5rem;
+  letter-spacing: -0.05em;
+}
+
+.projectCardCopy > p {
+  margin-bottom: 0.8rem;
+  color: #5d626e;
+  font-size: 0.73rem;
+  line-height: 1.52;
+}
+
+.inlineActions {
+  display: flex;
+  margin-top: auto;
+  padding-top: 0.9rem;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.inlineActions a {
+  color: var(--os-accent-deep);
+  font-size: 0.68rem;
+  font-weight: 750;
+}
+
+.inlineActions a:last-child {
+  color: #5f6470;
+}
+
+.certificateGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.certificateCard {
+  position: relative;
+  display: flex;
+  min-height: 18.5rem;
+  overflow: hidden;
+  padding: 1rem;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 1.2rem;
+  color: #fff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.certificateCard::after {
+  position: absolute;
+  width: 10rem;
+  height: 10rem;
+  right: -4rem;
+  bottom: -4rem;
+  border: 2rem solid rgba(255, 255, 255, 0.11);
+  border-radius: 50%;
+  content: "";
+}
+
+.certificate_violet { background: linear-gradient(145deg, #766cff, #4437c9); }
+.certificate_blue { background: linear-gradient(145deg, #42b9db, #2563a5); }
+.certificate_coral { background: linear-gradient(145deg, #ff9c69, #dc5563); }
+
+.certificateTopline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+}
+
+.certificateSeal {
+  display: grid;
+  width: 3.2rem;
+  height: 3.2rem;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 1.2rem;
+}
+
+.certificateCard p {
+  margin-bottom: 0.35rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.6rem;
+}
+
+.certificateCard h3 {
+  margin-bottom: 0.35rem;
+  font-size: 1.08rem;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+.certificateCard > div:last-child strong {
+  font-size: 0.7rem;
+}
+
+.privacyNote {
+  margin: 1rem 0 0;
+  color: var(--os-muted);
+  font-size: 0.66rem;
+  line-height: 1.5;
+}
+
+.resumeActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  min-height: 2.7rem;
+  padding: 0.7rem 0.85rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  border: 1px solid var(--os-line);
+  border-radius: 0.7rem;
+  font-size: 0.68rem;
+  font-weight: 750;
+}
+
+.primaryAction {
+  background: var(--os-accent);
+  color: #fff;
+}
+
+.secondaryAction {
+  background: rgba(255, 255, 255, 0.56);
+  color: var(--os-ink);
+}
+
+.resumeColumns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.resumeColumns > section {
+  padding: 1rem;
+  border: 1px solid var(--os-line);
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.resumeColumns > section > h3 {
+  margin-bottom: 0.8rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.timelineEntry {
+  display: grid;
+  padding: 0.8rem 0;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 0.8rem;
+  border-top: 1px solid var(--os-line);
+}
+
+.timelineEntry > span {
+  color: var(--os-muted);
+  font-family: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  font-size: 0.57rem;
+}
+
+.timelineEntry strong {
+  font-size: 0.72rem;
+}
+
+.timelineEntry p {
+  margin: 0.25rem 0 0;
+  color: var(--os-muted);
+  font-size: 0.64rem;
+  line-height: 1.45;
+}
+
+.resumeFooterCard {
+  display: grid;
+  margin-top: 1.2rem;
+  padding: 1.2rem;
+  grid-template-columns: 0.55fr 1fr 0.75fr;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 0.9rem;
+  background: #20232d;
+  color: #fff;
+}
+
+.resumeFooterCard span,
+.resumeFooterCard p {
+  margin: 0;
+  color: #aeb4c1;
+  font-size: 0.62rem;
+}
+
+.resumeFooterCard strong {
+  font-size: 0.78rem;
+}
+
+.contactApp {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(13rem, 0.8fr);
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.contactHero {
+  display: flex;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 1rem;
+  background: linear-gradient(145deg, #302b73, #5f59e8);
+  color: #fff;
+}
+
+.contactHero .kicker {
+  color: #b9dff7;
+}
+
+.contactHero p {
+  max-width: 35rem;
+  margin: 1rem 0 1.3rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.75rem;
+  line-height: 1.55;
+}
+
+.mailButton {
+  display: grid;
+  padding: 0.85rem 1rem;
+  grid-template-columns: 1fr auto;
+  gap: 0.2rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.mailButton span {
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 0.58rem;
+}
+
+.mailButton strong {
+  grid-column: 1;
+  font-size: 0.69rem;
+}
+
+.mailButton i {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: center;
+  font-style: normal;
+}
+
+.contactLinks {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.contactLinks a {
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: 1fr auto;
+  align-content: center;
+  border: 1px solid var(--os-line);
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.contactLinks span {
+  color: var(--os-muted);
+  font-size: 0.58rem;
+}
+
+.contactLinks strong {
+  grid-column: 1;
+  margin-top: 0.35rem;
+  font-size: 0.72rem;
+}
+
+.contactLinks i {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: center;
+  color: var(--os-accent-deep);
+  font-style: normal;
+}
+
+.startMenu {
+  position: absolute;
+  z-index: 100;
+  bottom: 5rem;
+  left: 50%;
+  width: min(31rem, calc(100vw - 2rem));
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 1.25rem;
+  background: rgba(247, 249, 254, 0.9);
+  box-shadow: 0 1.5rem 5rem rgba(28, 37, 65, 0.28);
+  transform: translateX(-50%);
+  backdrop-filter: blur(30px) saturate(1.15);
+  animation: menuIn 180ms ease-out;
+}
+
+@keyframes menuIn {
+  from { opacity: 0; transform: translate(-50%, 0.7rem) scale(0.98); }
+  to { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+
+.startMenuHeader,
+.startMenuHeader > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.startMenuHeader > div > div {
+  display: grid;
+  gap: 0.08rem;
+}
+
+.startMenuHeader strong {
+  font-size: 0.76rem;
+}
+
+.startMenuHeader span:not(.avatarMini) {
+  color: var(--os-muted);
+  font-size: 0.58rem;
+}
+
+.avatarMini {
+  display: grid;
+  width: 2.4rem;
+  height: 2.4rem;
+  place-items: center;
+  border-radius: 50%;
+  background: #272a34;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+}
+
+.startMenuHeader > button {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 0;
+  border-radius: 0.5rem;
+  background: rgba(30, 33, 43, 0.06);
+  cursor: pointer;
+}
+
+.startMenu > p {
+  margin: 1.2rem 0 0.7rem;
+  color: var(--os-muted);
+  font-family: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.startGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.35rem;
+}
+
+.startGrid button {
+  display: grid;
+  min-width: 0;
+  padding: 0.65rem 0.25rem;
+  place-items: center;
+  gap: 0.45rem;
+  border-radius: 0.7rem;
+  font-size: 0.58rem;
+}
+
+.startGrid button:hover {
+  background: rgba(49, 53, 70, 0.06);
+}
+
+.startContact {
+  display: flex;
+  margin-top: 1rem;
+  padding: 0.8rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-radius: 0.75rem;
+  background: #e9ebf4;
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+.startContact span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #47705d;
+}
+
+.taskbar {
+  position: absolute;
+  z-index: 120;
+  right: 0.65rem;
+  bottom: 0.55rem;
+  left: 0.65rem;
+  display: grid;
+  min-height: 3.9rem;
+  padding: 0.4rem 0.55rem;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 1rem;
+  background: rgba(245, 248, 253, 0.72);
+  box-shadow: 0 0.65rem 2rem rgba(36, 46, 72, 0.18);
+  backdrop-filter: blur(24px) saturate(1.15);
+}
+
+.startButton,
+.taskbarApps button {
+  position: relative;
+  display: grid;
+  width: 2.9rem;
+  height: 2.9rem;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  border-radius: 0.76rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+.startButton {
+  justify-self: end;
+  margin-right: 0.3rem;
+}
+
+.startButton > span {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 0.62rem;
+  background: #20232c;
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 800;
+}
+
+.taskbarApps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.startButton:hover,
+.taskbarApps button:hover,
+.taskbarButtonActive {
+  background: rgba(255, 255, 255, 0.7) !important;
+}
+
+.taskbarAppOpen::after {
+  position: absolute;
+  bottom: 0.15rem;
+  width: 0.28rem;
+  height: 0.16rem;
+  border-radius: 999px;
+  background: var(--os-accent);
+  content: "";
+}
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 0.6rem);
+  left: 50%;
+  padding: 0.4rem 0.55rem;
+  border-radius: 0.45rem;
+  background: #20232c;
+  color: #fff;
+  font-size: 0.56rem;
+  transform: translateX(-50%) translateY(0.3rem);
+  pointer-events: none;
+  opacity: 0;
+  white-space: nowrap;
+  transition: opacity 120ms ease, transform 120ms ease;
+}
+
+.taskbarApps button:hover .tooltip,
+.taskbarApps button:focus-visible .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.taskbarClock {
+  display: flex;
+  justify-self: end;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.taskbarClock > div {
+  display: grid;
+  justify-items: end;
+  color: #3e424d;
+  font-size: 0.62rem;
+  line-height: 1.35;
+}
+
+.statusDots {
+  display: flex;
+  height: 1rem;
+  align-items: flex-end;
+  gap: 0.12rem;
+}
+
+.statusDots i {
+  width: 0.14rem;
+  border-radius: 999px;
+  background: #4f5360;
+}
+
+.statusDots i:nth-child(1) { height: 35%; }
+.statusDots i:nth-child(2) { height: 65%; }
+.statusDots i:nth-child(3) { height: 100%; }
+
+.mobileShell {
+  display: none;
+}
+
+@media (max-width: 980px) and (min-width: 761px) {
+  .window {
+    width: calc(100vw - 10rem);
+  }
+
+  .aboutApp {
+    grid-template-columns: 13rem minmax(0, 1fr);
+  }
+
+  .desktopMessage {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .portfolioOS {
+    min-height: 40rem;
+    background: #dbe5f4;
+  }
+
+  .desktopShell {
+    display: none;
+  }
+
+  .mobileShell {
+    display: block;
+    color: #171922;
+    background:
+      radial-gradient(circle at 85% 14%, rgba(255, 255, 255, 0.82), transparent 13rem),
+      radial-gradient(circle at 12% 56%, rgba(113, 101, 255, 0.3), transparent 16rem),
+      linear-gradient(155deg, #e9f1f9 0%, #c6daf0 48%, #dee3f3 100%);
+  }
+
+  .mobileShell::before,
+  .mobileShell::after {
+    position: absolute;
+    border-radius: 50%;
+    content: "";
+    pointer-events: none;
+  }
+
+  .mobileShell::before {
+    width: 24rem;
+    height: 24rem;
+    top: -14rem;
+    left: -7rem;
+    border: 5rem solid rgba(102, 88, 244, 0.68);
+    filter: blur(1px);
+  }
+
+  .mobileShell::after {
+    width: 17rem;
+    height: 17rem;
+    right: -9rem;
+    bottom: -7rem;
+    border: 3.7rem solid rgba(58, 196, 225, 0.4);
+  }
+
+  .mobileStatus {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    height: 3.2rem;
+    padding: max(0.65rem, env(safe-area-inset-top)) 1.1rem 0;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    color: #242731;
+    font-size: 0.67rem;
+    font-weight: 750;
+  }
+
+  .mobileStatus > span:nth-child(2) {
+    color: rgba(35, 39, 51, 0.62);
+    font-family: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+    font-size: 0.56rem;
+    letter-spacing: 0.08em;
+  }
+
+  .mobileStatus > div {
+    display: flex;
+    height: 0.8rem;
+    justify-self: end;
+    align-items: flex-end;
+    gap: 0.12rem;
+  }
+
+  .mobileStatus > div i {
+    width: 0.12rem;
+    border-radius: 999px;
+    background: #282b35;
+  }
+
+  .mobileStatus > div i:nth-child(1) { height: 30%; }
+  .mobileStatus > div i:nth-child(2) { height: 55%; }
+  .mobileStatus > div i:nth-child(3) { height: 80%; }
+
+  .mobileStatus > div b {
+    width: 1.1rem;
+    height: 0.55rem;
+    margin-left: 0.2rem;
+    border: 1px solid #282b35;
+    border-radius: 0.18rem;
+    box-shadow: inset -0.2rem 0 0 #282b35;
+  }
+
+  .mobileHome {
+    position: relative;
+    z-index: 2;
+    height: calc(100% - 3.2rem);
+    overflow-y: auto;
+    padding: 0.65rem 1rem 8.4rem;
+    scrollbar-width: none;
+  }
+
+  .mobileHome::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobileGreeting {
+    position: relative;
+    display: grid;
+    min-height: 11.5rem;
+    padding: 1rem;
+    grid-template-columns: 4.9rem minmax(0, 1fr);
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    border-radius: 1.55rem;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 1rem 2.8rem rgba(36, 47, 76, 0.12);
+    backdrop-filter: blur(20px);
+  }
+
+  .mobileProfileImage {
+    overflow: hidden;
+    aspect-ratio: 1;
+    border: 0.25rem solid rgba(255, 255, 255, 0.65);
+    border-radius: 1.25rem;
+  }
+
+  .mobileProfileImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .mobileGreeting > div:nth-child(2) > span {
+    color: #656b78;
+    font-size: 0.72rem;
+  }
+
+  .mobileGreeting h1 {
+    margin: 0.1rem 0 0.25rem;
+    font-size: clamp(2rem, 10vw, 3.2rem);
+    line-height: 0.92;
+    letter-spacing: -0.075em;
+  }
+
+  .mobileGreeting p {
+    max-width: 21rem;
+    margin: 0;
+    color: #565c69;
+    font-size: 0.72rem;
+    line-height: 1.42;
+  }
+
+  .mobileAvailability {
+    position: absolute;
+    right: 0.8rem;
+    bottom: 0.75rem;
+    display: flex;
+    padding: 0.38rem 0.5rem;
+    align-items: center;
+    gap: 0.42rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.6);
+    color: #347457;
+    font-size: 0.56rem;
+    font-weight: 700;
+  }
+
+  .mobileGrid {
+    display: grid;
+    margin-top: 1.4rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.15rem 0.55rem;
+  }
+
+  .mobileGrid button {
+    display: grid;
+    min-width: 0;
+    padding: 0;
+    place-items: center;
+    gap: 0.42rem;
+    font-size: 0.62rem;
+    font-weight: 650;
+  }
+
+  .mobileGrid .appGlyph {
+    width: clamp(3.2rem, 15.5vw, 4.2rem);
+    height: clamp(3.2rem, 15.5vw, 4.2rem);
+    border-radius: 1.25rem;
+    font-size: 0.76rem;
+  }
+
+  .mobileGrid button > span:last-child {
+    overflow: hidden;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mobileWidget {
+    display: grid;
+    margin-top: 1.4rem;
+    padding: 1rem;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.68);
+    border-radius: 1.25rem;
+    background: rgba(42, 45, 58, 0.85);
+    color: #fff;
+    box-shadow: 0 1rem 2.5rem rgba(38, 44, 66, 0.2);
+  }
+
+  .mobileWidget > span {
+    color: #aeb4c2;
+    font-family: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+    font-size: 0.54rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+
+  .mobileWidget strong {
+    grid-column: 1;
+    margin-top: 0.15rem;
+    font-size: 1.15rem;
+  }
+
+  .mobileWidget p {
+    grid-column: 1;
+    margin: 0.35rem 0 0;
+    color: #aeb4c2;
+    font-size: 0.63rem;
+  }
+
+  .mobileWidget button {
+    grid-column: 2;
+    grid-row: 1 / 4;
+    padding: 0.6rem 0.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 0.65rem;
+    background: rgba(255, 255, 255, 0.09);
+    color: #fff;
+    font-size: 0.6rem;
+    font-weight: 700;
+  }
+
+  .mobileDock {
+    position: absolute;
+    z-index: 20;
+    right: 1rem;
+    bottom: max(1.1rem, calc(env(safe-area-inset-bottom) + 0.55rem));
+    left: 1rem;
+    display: flex;
+    min-height: 4.8rem;
+    padding: 0.65rem 1rem;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: 1.55rem;
+    background: rgba(244, 248, 253, 0.6);
+    box-shadow: 0 1rem 2.8rem rgba(31, 42, 70, 0.2);
+    backdrop-filter: blur(24px) saturate(1.2);
+  }
+
+  .mobileDock .appGlyphCompact {
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 1rem;
+    font-size: 0.72rem;
+  }
+
+  .mobileAppView {
+    position: absolute;
+    z-index: 50;
+    inset: 0;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    background: rgba(243, 246, 251, 0.97);
+    animation: appIn 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  @keyframes appIn {
+    from { opacity: 0; transform: translateY(1.5rem) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .mobileAppHeader {
+    display: grid;
+    min-height: 4.15rem;
+    padding: max(0.75rem, env(safe-area-inset-top)) 0.8rem 0.55rem;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--os-line);
+    background: rgba(255, 255, 255, 0.74);
+    backdrop-filter: blur(20px);
+  }
+
+  .mobileAppHeader > button {
+    justify-self: start;
+    border: 0;
+    background: transparent;
+    color: var(--os-accent-deep);
+    cursor: pointer;
+    font-size: 0.68rem;
+    font-weight: 750;
+  }
+
+  .mobileAppHeader > button span {
+    font-size: 1.25rem;
+    vertical-align: -0.06rem;
+  }
+
+  .mobileAppHeader > div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .mobileAppHeader strong {
+    font-size: 0.74rem;
+  }
+
+  .mobileAppBody {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: calc(env(safe-area-inset-bottom) + 1.2rem);
+  }
+
+  .mobileAppBody .aboutApp,
+  .mobileAppBody .contactApp {
+    display: block;
+  }
+
+  .mobileAppBody .profilePanel {
+    display: grid;
+    padding: 1rem;
+    grid-template-columns: 7rem 1fr;
+    align-items: end;
+    border-right: 0;
+    border-bottom: 1px solid var(--os-line);
+  }
+
+  .mobileAppBody .profileImage {
+    grid-row: 1 / 3;
+  }
+
+  .mobileAppBody .aboutCopy {
+    padding: 1.2rem 1rem 2rem;
+  }
+
+  .mobileAppBody .leadCopy {
+    font-size: 1.45rem;
+  }
+
+  .mobileAppBody .projectsApp,
+  .mobileAppBody .certificatesApp,
+  .mobileAppBody .resumeApp,
+  .mobileAppBody .contactApp {
+    padding: 1.2rem 1rem 2rem;
+  }
+
+  .mobileAppBody .appContentHeader,
+  .mobileAppBody .resumeIntro {
+    display: block;
+  }
+
+  .mobileAppBody .appContentHeader h2,
+  .mobileAppBody .resumeIntro h2,
+  .mobileAppBody .contactHero h2 {
+    font-size: 1.9rem;
+  }
+
+  .mobileAppBody .countBadge {
+    display: inline-flex;
+    margin-top: 0.8rem;
+  }
+
+  .mobileAppBody .projectCard {
+    grid-template-columns: 1fr;
+  }
+
+  .mobileAppBody .projectImage,
+  .mobileAppBody .terminalPreview {
+    min-height: 11rem;
+    aspect-ratio: 16 / 9;
+  }
+
+  .mobileAppBody .projectCardCopy {
+    min-height: 16rem;
+  }
+
+  .mobileAppBody .certificateGrid,
+  .mobileAppBody .resumeColumns {
+    grid-template-columns: 1fr;
+  }
+
+  .mobileAppBody .certificateCard {
+    min-height: 16rem;
+  }
+
+  .mobileAppBody .resumeActions {
+    margin-top: 1rem;
+  }
+
+  .mobileAppBody .primaryAction,
+  .mobileAppBody .secondaryAction {
+    flex: 1;
+  }
+
+  .mobileAppBody .resumeFooterCard {
+    grid-template-columns: 1fr;
+  }
+
+  .mobileAppBody .contactHero {
+    min-height: 24rem;
+  }
+
+  .mobileAppBody .contactLinks {
+    margin-top: 0.8rem;
+  }
+
+  .homeIndicator {
+    position: absolute;
+    z-index: 80;
+    bottom: max(0.35rem, env(safe-area-inset-bottom));
+    left: 50%;
+    width: 7rem;
+    height: 0.28rem;
+    border-radius: 999px;
+    background: rgba(25, 27, 34, 0.72);
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 390px) {
+  .mobileGreeting {
+    grid-template-columns: 4rem minmax(0, 1fr);
+  }
+
+  .mobileGreeting h1 {
+    font-size: 2.25rem;
+  }
+
+  .mobileGrid {
+    gap-inline: 0.25rem;
+  }
+
+  .mobileAppBody .factGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .mobileAppBody .inlineActions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .window,
+  .startMenu,
+  .mobileAppView,
+  .desktopIcons button {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* iPhone-style mobile refinement: quiet home screen, app-to-icon expansion, native header. */
+@media (max-width: 760px) {
+  .mobileShell::before,
+  .mobileShell::after,
+  .mobileStatus > time,
+  .mobileStatus > div i,
+  .mobilePageIndicator,
+  .mobilePageIndicator i:first-child,
+  .homeIndicator {
+    animation: none;
+    will-change: auto;
+  }
+
+  .mobileHome {
+    transition: filter 440ms cubic-bezier(0.22, 1, 0.36, 1), opacity 440ms ease, transform 440ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: center center;
+  }
+
+  .mobileHome[inert] {
+    filter: brightness(0.84) blur(0.7px);
+    opacity: 0.82;
+    transform: scale(0.955);
+  }
+
+  .mobileHomeRestoring.mobileHome[inert] {
+    filter: none;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .mobileGrid button {
+    animation: mobileIconSettle 380ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .mobileGrid button:active .appGlyph {
+    filter: brightness(0.94) saturate(1.03);
+    transform: scale(0.9);
+  }
+
+  .mobileAppView {
+    --app-clip-top: 52%;
+    --app-clip-right: 80%;
+    --app-clip-bottom: 41%;
+    --app-clip-left: 5%;
+    animation: mobileIosOpen 460ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    transform-origin: center center;
+    will-change: clip-path, opacity, transform;
+  }
+
+  .mobileAppView[data-mobile-app="about"] {
+    --app-clip-right: 80%;
+    --app-clip-left: 5%;
+  }
+
+  .mobileAppView[data-mobile-app="projects"] {
+    --app-clip-right: 55%;
+    --app-clip-left: 30%;
+  }
+
+  .mobileAppView[data-mobile-app="certificates"] {
+    --app-clip-right: 30%;
+    --app-clip-left: 55%;
+  }
+
+  .mobileAppView[data-mobile-app="resume"] {
+    --app-clip-right: 5%;
+    --app-clip-left: 80%;
+  }
+
+  .mobileAppView[data-mobile-app="contact"] {
+    --app-clip-top: 66%;
+    --app-clip-right: 80%;
+    --app-clip-bottom: 27%;
+    --app-clip-left: 5%;
+  }
+
+  .mobileAppView:not(.mobileAppClosing) .mobileAppHeader,
+  .mobileAppView:not(.mobileAppClosing) .mobileAppBody > * {
+    animation: mobileIosContentIn 260ms 90ms ease-out both;
+  }
+
+  .mobileAppHeader {
+    position: relative;
+    min-height: calc(3.25rem + env(safe-area-inset-top));
+    padding: max(0.35rem, env(safe-area-inset-top)) 0.8rem 0.35rem;
+    grid-template-columns: 1fr auto 1fr;
+    border-bottom: 1px solid rgba(60, 60, 67, 0.14);
+    background: rgba(249, 249, 251, 0.88);
+    box-shadow: none;
+    backdrop-filter: blur(24px) saturate(1.25);
+  }
+
+  .mobileAppHeader > button {
+    min-height: 2.65rem;
+    padding: 0.4rem 0.35rem;
+    justify-self: start;
+    border-radius: 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 620;
+    letter-spacing: -0.01em;
+  }
+
+  .mobileAppHeader > button span {
+    margin-right: 0.05rem;
+    font-size: 1.45rem;
+    font-weight: 430;
+    vertical-align: -0.08rem;
+  }
+
+  .mobileAppTitle {
+    grid-column: 2;
+    justify-self: center;
+    color: #1c1c1e;
+    font-size: 0.9rem;
+    font-weight: 680;
+    letter-spacing: -0.018em;
+    white-space: nowrap;
+  }
+
+  .mobileAppHeader > span:last-child {
+    grid-column: 3;
+  }
+
+  .mobileAppBody {
+    overscroll-behavior: contain;
+    scrollbar-width: none;
+  }
+
+  .mobileAppBody::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobileAppClosing {
+    animation: mobileIosClose 390ms cubic-bezier(0.4, 0, 0.8, 0.2) forwards;
+    pointer-events: none;
+  }
+
+  .mobileAppClosing .mobileAppHeader,
+  .mobileAppClosing .mobileAppBody > * {
+    animation: none;
+  }
+}
+
+@keyframes mobileIconSettle {
+  from { opacity: 0; transform: translateY(0.55rem) scale(0.94); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes mobileIosOpen {
+  0% {
+    clip-path: inset(var(--app-clip-top) var(--app-clip-right) var(--app-clip-bottom) var(--app-clip-left) round 1.15rem);
+    opacity: 0.35;
+    transform: scale(0.985);
+  }
+  32% { opacity: 1; }
+  100% {
+    clip-path: inset(0 0 0 0 round 0);
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes mobileIosContentIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes mobileIosClose {
+  0% {
+    clip-path: inset(0 0 0 0 round 0);
+    opacity: 1;
+    transform: scale(1);
+  }
+  72% { opacity: 0.92; }
+  100% {
+    clip-path: inset(var(--app-clip-top) var(--app-clip-right) var(--app-clip-bottom) var(--app-clip-left) round 1.15rem);
+    opacity: 0;
+    transform: scale(0.985);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobileHome,
+  .mobileGrid button,
+  .mobileAppView,
+  .mobileAppView .mobileAppHeader,
+  .mobileAppView .mobileAppBody > * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .mobileHome[inert] {
+    filter: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Clear OS layout: familiar controls, quiet wallpaper, one navigation layer. */
+.portfolioOS {
+  --os-accent: #2563eb;
+  --os-accent-deep: #1d4ed8;
+  background: #cbd9e9;
+}
+
+.desktopShell {
+  background:
+    radial-gradient(circle at 75% 18%, rgba(255, 255, 255, 0.72), transparent 26rem),
+    radial-gradient(circle at 45% 110%, rgba(48, 111, 201, 0.28), transparent 38rem),
+    linear-gradient(145deg, #b9cbe0 0%, #dce7f2 48%, #afc4dd 100%);
+}
+
+.desktopShell::before {
+  width: 38rem;
+  height: 38rem;
+  top: -22rem;
+  left: 45%;
+  border: 7rem solid rgba(58, 109, 191, 0.18);
+  border-radius: 45% 55% 52% 48%;
+  box-shadow: none;
+  filter: blur(1px);
+}
+
+.desktopShell::after {
+  width: 28rem;
+  height: 28rem;
+  right: -16rem;
+  bottom: -15rem;
+  border: 5rem solid rgba(67, 166, 205, 0.17);
+  filter: blur(1px);
+}
+
+.wallpaperGlow {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+  background-size: 6rem 6rem;
+  opacity: 0.5;
+}
+
+.desktopWelcome {
+  position: absolute;
+  z-index: 2;
+  top: 1.25rem;
+  right: 1.25rem;
+  display: grid;
+  width: min(21rem, calc(100vw - 10rem));
+  min-height: 5.5rem;
+  padding: 0.85rem 1rem;
+  grid-template-columns: 3.4rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.46);
+  border-radius: 1rem;
+  background: rgba(27, 40, 60, 0.76);
+  color: #fff;
+  box-shadow: 0 1rem 2.5rem rgba(29, 45, 70, 0.16);
+  backdrop-filter: blur(20px) saturate(1.1);
+}
+
+.desktopWelcomeAvatar {
+  overflow: hidden;
+  width: 3.4rem;
+  height: 3.4rem;
+  border: 2px solid rgba(255, 255, 255, 0.58);
+  border-radius: 0.8rem;
+}
+
+.desktopWelcomeAvatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.desktopWelcome > div:nth-child(2) {
+  display: grid;
+  gap: 0.08rem;
+}
+
+.desktopWelcome > div:nth-child(2) > span {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.58rem;
+}
+
+.desktopWelcome strong {
+  font-size: 0.9rem;
+}
+
+.desktopWelcome p {
+  margin: 0.12rem 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.62rem;
+  line-height: 1.35;
+}
+
+.desktopWelcomeStatus {
+  display: flex;
+  grid-column: 2;
+  align-items: center;
+  gap: 0.45rem;
+  color: #b8e8cb;
+  font-size: 0.55rem;
+  font-weight: 700;
+}
+
+.desktopWelcomeStatus i {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: #45c985;
+  box-shadow: 0 0 0 0.2rem rgba(69, 201, 133, 0.14);
+}
+
+.desktopIcons {
+  top: 1.1rem;
+  left: 0.85rem;
+  width: 6.4rem;
+  gap: 0.2rem;
+}
+
+.desktopIcons button {
+  min-height: 5.9rem;
+  gap: 0.35rem;
+  border-radius: 0.5rem;
+  font-size: 0.7rem;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.desktopIcons button:hover,
+.desktopIcons button:focus-visible {
+  border-color: rgba(32, 97, 176, 0.32);
+  background: rgba(226, 239, 255, 0.55);
+}
+
+.appGlyph {
+  position: relative;
+  border-radius: 0.78rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.38), 0 0.45rem 0.9rem rgba(30, 50, 80, 0.18);
+}
+
+.appGlyph_projects,
+.appGlyph_certificates {
+  height: 2.85rem;
+  margin-top: 0.5rem;
+  border-radius: 0.38rem 0.55rem 0.55rem;
+}
+
+.appGlyph_projects::before,
+.appGlyph_certificates::before {
+  position: absolute;
+  z-index: -1;
+  top: -0.48rem;
+  left: 0.18rem;
+  width: 1.6rem;
+  height: 0.7rem;
+  border-radius: 0.34rem 0.34rem 0 0;
+  background: inherit;
+  content: "";
+}
+
+.appGlyph_resume {
+  border-radius: 0.35rem;
+}
+
+.appGlyph_resume::after {
+  position: absolute;
+  right: 0.38rem;
+  bottom: 0.42rem;
+  width: 1.35rem;
+  height: 0.12rem;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 -0.35rem 0 rgba(255, 255, 255, 0.4), 0 -0.7rem 0 rgba(255, 255, 255, 0.4);
+  content: "";
+}
+
+.windowLayer {
+  inset: 0 0 4.75rem;
+}
+
+.window,
+.window_about,
+.window_projects,
+.window_certificates,
+.window_resume,
+.window_contact {
+  top: auto;
+  left: auto;
+  border-radius: 0.85rem;
+  background: rgba(249, 250, 252, 0.97);
+  transform: none;
+  opacity: 0.96;
+  backdrop-filter: blur(24px) saturate(1.08);
+  animation: windowOpen 220ms cubic-bezier(0.2, 0.85, 0.25, 1);
+  transition: opacity 160ms ease, box-shadow 160ms ease;
+}
+
+.window {
+  width: min(58rem, calc(100vw - 12rem));
+  height: min(40rem, calc(100vh - 8.25rem));
+}
+
+.window_about {
+  width: min(52rem, calc(100vw - 12rem));
+  height: min(38rem, calc(100vh - 8.25rem));
+}
+
+.window_projects {
+  width: min(66rem, calc(100vw - 10rem));
+}
+
+.window_certificates,
+.window_resume {
+  width: min(61rem, calc(100vw - 11rem));
+  height: min(38rem, calc(100vh - 8.25rem));
+}
+
+.window_contact {
+  width: min(48rem, calc(100vw - 13rem));
+  height: min(34rem, calc(100vh - 9rem));
+}
+
+@keyframes windowOpen {
+  from { opacity: 0; transform: translateY(0.8rem) scale(0.97); }
+  to { opacity: 0.96; transform: translateY(0) scale(1); }
+}
+
+.windowActive {
+  opacity: 1;
+  box-shadow: 0 1.5rem 4.5rem rgba(27, 44, 70, 0.28), 0 0.2rem 0.7rem rgba(27, 44, 70, 0.12);
+}
+
+.windowActive .windowBar {
+  background: rgba(255, 255, 255, 0.93);
+}
+
+.windowMaximized {
+  inset: 0.55rem 0.55rem 0.15rem !important;
+  width: auto !important;
+  max-width: none;
+  height: auto !important;
+  border-radius: 0.7rem;
+  transform: none !important;
+}
+
+.windowClosing {
+  pointer-events: none;
+  animation: windowClose 180ms ease-in forwards;
+}
+
+.windowMinimizing {
+  pointer-events: none;
+  animation: windowMinimize 210ms ease-in forwards;
+  transform-origin: center bottom;
+}
+
+@keyframes windowClose {
+  to { opacity: 0; transform: translateY(0.5rem) scale(0.96); }
+}
+
+@keyframes windowMinimize {
+  to { opacity: 0; transform: translateY(45vh) scale(0.2); }
+}
+
+.windowBar {
+  min-height: 3rem;
+  padding: 0 0 0 0.7rem;
+  background: rgba(240, 243, 248, 0.94);
+  cursor: grab;
+  touch-action: none;
+}
+
+.windowBar:active {
+  cursor: grabbing;
+}
+
+.windowBar > div:first-child > span:not(.appGlyph) {
+  font-size: 0.76rem;
+}
+
+.windowBar small {
+  color: #7b8290;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.windowControls button {
+  width: 2.85rem;
+  border-radius: 0;
+  font-size: 0.95rem;
+}
+
+.windowControls button:last-child {
+  border-radius: 0 0.8rem 0 0;
+}
+
+.taskbar {
+  right: 0.65rem;
+  bottom: 0.55rem;
+  left: 0.65rem;
+  min-height: 3.75rem;
+  border-radius: 0.8rem;
+  background: rgba(244, 248, 252, 0.82);
+  box-shadow: 0 0.6rem 1.8rem rgba(34, 51, 77, 0.16);
+}
+
+.startButton > span.startMark {
+  display: grid;
+  width: 1.45rem;
+  height: 1.45rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.12rem;
+  border-radius: 0;
+  background: transparent;
+}
+
+.startMark i {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.06rem;
+  background: #2368d7;
+}
+
+.taskbarApps button,
+.startButton {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 0.55rem;
+}
+
+.taskbarApps {
+  gap: 0.18rem;
+}
+
+.taskbarApps .appGlyphCompact,
+.windowBar .appGlyphCompact {
+  width: 2rem;
+  height: 2rem;
+  margin: 0;
+  border-radius: 0.55rem;
+  font-size: 0.56rem;
+}
+
+.taskbarApps .appGlyph_projects.appGlyphCompact,
+.taskbarApps .appGlyph_certificates.appGlyphCompact,
+.windowBar .appGlyph_projects.appGlyphCompact,
+.windowBar .appGlyph_certificates.appGlyphCompact {
+  height: 1.78rem;
+  margin-top: 0.22rem;
+  border-radius: 0.28rem 0.45rem 0.45rem;
+}
+
+.taskbarApps .appGlyph_projects.appGlyphCompact::before,
+.taskbarApps .appGlyph_certificates.appGlyphCompact::before,
+.windowBar .appGlyph_projects.appGlyphCompact::before,
+.windowBar .appGlyph_certificates.appGlyphCompact::before {
+  top: -0.25rem;
+  left: 0.12rem;
+  width: 1rem;
+  height: 0.38rem;
+  border-radius: 0.22rem 0.22rem 0 0;
+}
+
+.taskbarAppOpen::after {
+  bottom: 0.1rem;
+  width: 0.32rem;
+  height: 0.18rem;
+  background: #2563eb;
+}
+
+.startMenu {
+  bottom: 4.8rem;
+  width: min(29rem, calc(100vw - 2rem));
+  border-radius: 0.95rem;
+  background: rgba(247, 249, 252, 0.96);
+}
+
+@media (min-width: 1800px) {
+  .window {
+    height: min(50rem, calc(100vh - 9rem));
+  }
+
+  .window_about {
+    width: min(72rem, calc(100vw - 16rem));
+    height: min(38rem, calc(100vh - 9rem));
+  }
+
+  .window_projects {
+    width: min(88rem, calc(100vw - 14rem));
+  }
+
+  .window_certificates,
+  .window_resume {
+    width: min(82rem, calc(100vw - 15rem));
+    height: min(38rem, calc(100vh - 9rem));
+  }
+
+  .window_contact {
+    width: min(64rem, calc(100vw - 17rem));
+    height: min(34rem, calc(100vh - 10rem));
+  }
+}
+
+@media (max-width: 1120px) and (min-width: 761px) {
+  .projectCard {
+    grid-template-columns: 1fr;
+  }
+
+  .projectImage,
+  .terminalPreview {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .projectCardCopy {
+    min-height: 15rem;
+  }
+}
+
+@media (max-width: 980px) and (min-width: 761px) {
+  .desktopWelcome {
+    display: none;
+  }
+
+  .window:not(.windowMaximized) {
+    right: 0.75rem;
+    left: 7.5rem !important;
+    width: auto !important;
+    max-width: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .mobileShell {
+    background:
+      radial-gradient(circle at 90% 14%, rgba(255, 255, 255, 0.78), transparent 14rem),
+      radial-gradient(circle at 5% 95%, rgba(47, 108, 198, 0.2), transparent 16rem),
+      linear-gradient(155deg, #d6e4f2 0%, #edf3f8 51%, #c5d7e9 100%);
+  }
+
+  .mobileShell::before {
+    width: 19rem;
+    height: 19rem;
+    top: -13rem;
+    left: -9rem;
+    border: 3rem solid rgba(43, 102, 190, 0.12);
+    filter: none;
+  }
+
+  .mobileShell::after {
+    width: 16rem;
+    height: 16rem;
+    right: -11rem;
+    bottom: -9rem;
+    border: 2.8rem solid rgba(49, 151, 193, 0.12);
+  }
+
+  .mobileStatus {
+    height: 2.75rem;
+    padding: max(0.6rem, env(safe-area-inset-top)) 1.2rem 0;
+  }
+
+  .mobileStatus > span:nth-child(2) {
+    display: none;
+  }
+
+  .mobileHome {
+    height: calc(100% - 2.75rem);
+    padding: 0.4rem 1.05rem 2.6rem;
+  }
+
+  .mobileHomeHeader {
+    display: grid;
+    margin-top: clamp(0.75rem, 5vh, 2.6rem);
+    justify-items: center;
+    color: #233044;
+  }
+
+  .mobileHomeHeader > span {
+    color: rgba(35, 48, 68, 0.68);
+    font-size: 0.75rem;
+    font-weight: 650;
+  }
+
+  .mobileHomeHeader strong {
+    margin-top: -0.1rem;
+    font-size: clamp(3.7rem, 18vw, 5.4rem);
+    font-weight: 540;
+    line-height: 1;
+    letter-spacing: -0.075em;
+  }
+
+  .mobileIdentity {
+    position: relative;
+    display: grid;
+    min-height: 5.7rem;
+    margin-top: clamp(1.4rem, 5vh, 2.8rem);
+    padding: 0.75rem;
+    grid-template-columns: 3.65rem minmax(0, 1fr);
+    align-items: center;
+    gap: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.78);
+    border-radius: 1.25rem;
+    background: rgba(255, 255, 255, 0.58);
+    box-shadow: 0 0.85rem 2rem rgba(33, 56, 86, 0.1);
+    backdrop-filter: blur(18px);
+  }
+
+  .mobileIdentity .mobileProfileImage {
+    width: 3.65rem;
+    height: 3.65rem;
+    border: 2px solid rgba(255, 255, 255, 0.76);
+    border-radius: 0.9rem;
+  }
+
+  .mobileIdentity > div:nth-child(2) {
+    min-width: 0;
+  }
+
+  .mobileIdentity > div:nth-child(2) > span {
+    color: #747d8b;
+    font-size: 0.56rem;
+  }
+
+  .mobileIdentity h1 {
+    margin: 0.05rem 0 0.08rem;
+    font-size: 1.2rem;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+  }
+
+  .mobileIdentity p {
+    margin: 0;
+    color: #687181;
+    font-size: 0.59rem;
+  }
+
+  .mobileIdentity .mobileAvailability {
+    right: 0.7rem;
+    bottom: -0.95rem;
+    padding: 0.34rem 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.78);
+    background: rgba(247, 251, 248, 0.88);
+    box-shadow: 0 0.35rem 0.9rem rgba(31, 57, 43, 0.08);
+  }
+
+  .mobileGrid {
+    margin-top: clamp(2rem, 6vh, 3.5rem);
+    gap: 1.25rem 0.45rem;
+  }
+
+  .mobileGrid button {
+    gap: 0.48rem;
+    font-size: 0.66rem;
+  }
+
+  .mobileGrid .appGlyph {
+    width: clamp(3.3rem, 16vw, 4.1rem);
+    height: clamp(3.3rem, 16vw, 4.1rem);
+    border-radius: 1rem;
+  }
+
+  .mobileGrid .appGlyph_projects,
+  .mobileGrid .appGlyph_certificates {
+    height: clamp(2.85rem, 13.6vw, 3.55rem);
+  }
+
+  .mobilePageIndicator {
+    display: flex;
+    margin-top: clamp(2.2rem, 7vh, 4.2rem);
+    justify-content: center;
+    gap: 0.36rem;
+  }
+
+  .mobilePageIndicator i {
+    width: 0.38rem;
+    height: 0.38rem;
+    border-radius: 50%;
+    background: rgba(43, 55, 72, 0.2);
+  }
+
+  .mobilePageIndicator i:first-child {
+    background: rgba(43, 55, 72, 0.68);
+  }
+
+  .mobileDock,
+  .mobileWidget,
+  .mobileGreeting {
+    display: none;
+  }
+
+  .mobileAppView {
+    background: rgba(247, 249, 252, 0.99);
+    animation: mobileAppOpen 300ms cubic-bezier(0.18, 0.82, 0.22, 1);
+    transform-origin: center 62%;
+  }
+
+  @keyframes mobileAppOpen {
+    from { opacity: 0; border-radius: 2.5rem; transform: translateY(1.75rem) scale(0.9); }
+    to { opacity: 1; border-radius: 0; transform: translateY(0) scale(1); }
+  }
+
+  .mobileAppHeader {
+    min-height: 3.8rem;
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  .homeIndicator {
+    background: rgba(25, 34, 47, 0.7);
+  }
+}
+
+@media (max-width: 390px) {
+  .mobileIdentity {
+    margin-top: 1.35rem;
+  }
+
+  .mobileGrid {
+    margin-top: 2rem;
+    gap-block: 1rem;
+  }
+
+  .mobilePageIndicator {
+    margin-top: 1.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .windowClosing,
+  .windowMinimizing,
+  .mobileAppView {
+    animation: none;
+  }
+}
+
+/* Generated Artur OS icon atlas: one coherent visual family across desktop and mobile. */
+.appGlyph {
+  overflow: hidden;
+  background-image: url("/icons/artur-os-icon-atlas.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: 300% 200% !important;
+  color: transparent;
+}
+
+.appGlyph_about { background-position: 50% 0 !important; }
+.appGlyph_projects { background-position: 100% 0 !important; }
+.appGlyph_certificates { background-position: 0 100% !important; }
+.appGlyph_resume { background-position: 50% 100% !important; }
+.appGlyph_contact { background-position: 100% 100% !important; }
+
+.appGlyph_projects,
+.appGlyph_certificates,
+.appGlyph_resume {
+  height: 3.35rem;
+  margin-top: 0;
+  border-radius: 0.78rem;
+}
+
+.appGlyph_projects::before,
+.appGlyph_certificates::before,
+.appGlyph_resume::after {
+  display: none;
+}
+
+.taskbarApps .appGlyph_projects.appGlyphCompact,
+.taskbarApps .appGlyph_certificates.appGlyphCompact,
+.taskbarApps .appGlyph_resume.appGlyphCompact,
+.windowBar .appGlyph_projects.appGlyphCompact,
+.windowBar .appGlyph_certificates.appGlyphCompact,
+.windowBar .appGlyph_resume.appGlyphCompact {
+  width: 2rem;
+  height: 2rem;
+  margin: 0;
+  border-radius: 0.55rem;
+}
+
+.startButton > span.startMark {
+  display: block;
+  width: 1.9rem;
+  height: 1.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.64);
+  border-radius: 0.48rem;
+  background-image: url("/icons/artur-os-icon-atlas.png");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 300% 200%;
+  box-shadow: 0 0.25rem 0.6rem rgba(25, 67, 135, 0.22);
+}
+
+.windowBody {
+  container: window-content / inline-size;
+}
+
+.windowResizeHandle {
+  position: absolute;
+  z-index: 8;
+  right: 0.08rem;
+  bottom: 0.08rem;
+  width: 1.65rem;
+  height: 1.65rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0.35rem 0 0.65rem 0;
+  background: transparent;
+  cursor: nwse-resize;
+  opacity: 0.6;
+  touch-action: none;
+  transition: background 140ms ease, opacity 140ms ease;
+}
+
+.windowResizeHandle::before {
+  position: absolute;
+  right: 0.3rem;
+  bottom: 0.3rem;
+  width: 0.68rem;
+  height: 0.68rem;
+  border-right: 2px solid #687182;
+  border-bottom: 2px solid #687182;
+  border-radius: 0 0 0.12rem;
+  content: "";
+}
+
+.windowResizeHandle::after {
+  position: absolute;
+  right: 0.62rem;
+  bottom: 0.62rem;
+  width: 0.38rem;
+  height: 0.38rem;
+  border-right: 1px solid #687182;
+  border-bottom: 1px solid #687182;
+  content: "";
+}
+
+.windowResizeHandle:hover,
+.windowResizeHandle:focus-visible {
+  background: rgba(37, 99, 235, 0.1);
+  opacity: 1;
+  outline: 2px solid rgba(37, 99, 235, 0.7);
+  outline-offset: -2px;
+}
+
+.windowMaximized .windowResizeHandle,
+.windowMinimized .windowResizeHandle {
+  display: none;
+}
+
+@container window-content (max-width: 50rem) {
+  .projectCard {
+    grid-template-columns: 1fr;
+  }
+
+  .projectImage,
+  .terminalPreview {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .projectCardCopy {
+    min-height: 14rem;
+  }
+}
+
+@container window-content (max-width: 44rem) {
+  .appContentHeader,
+  .resumeIntro {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .aboutApp,
+  .contactApp,
+  .certificateGrid,
+  .resumeColumns,
+  .resumeFooterCard {
+    grid-template-columns: 1fr;
+  }
+
+  .profilePanel {
+    display: grid;
+    grid-template-columns: minmax(7rem, 9rem) minmax(0, 1fr);
+    align-items: center;
+    border-right: 0;
+    border-bottom: 1px solid var(--os-line);
+  }
+
+  .certificateCard {
+    min-height: 14rem;
+  }
+
+  .contactApp {
+    align-content: start;
+  }
+}
+
+@media (max-width: 980px) {
+  .windowResizeHandle {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .mobileGrid .appGlyph_projects,
+  .mobileGrid .appGlyph_certificates,
+  .mobileGrid .appGlyph_resume {
+    height: clamp(3.3rem, 16vw, 4.1rem);
+    margin-top: 0;
+    border-radius: 1rem;
+  }
+}
+
+/* Phone motion language: quick, tactile and intentionally calmer than the desktop. */
+@media (max-width: 760px) {
+  .mobileShell::before {
+    animation: mobileAuraOne 14s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
+  .mobileShell::after {
+    animation: mobileAuraTwo 18s ease-in-out infinite alternate;
+    will-change: transform;
+  }
+
+  .mobileStatus > time {
+    animation: mobileStatusIn 380ms 80ms ease-out both;
+  }
+
+  .mobileStatus > div i {
+    animation: mobileSignalIn 420ms cubic-bezier(0.2, 0.9, 0.25, 1.2) both;
+    transform-origin: center bottom;
+  }
+
+  .mobileStatus > div i:nth-child(1) { animation-delay: 130ms; }
+  .mobileStatus > div i:nth-child(2) { animation-delay: 180ms; }
+  .mobileStatus > div i:nth-child(3) { animation-delay: 230ms; }
+
+  .mobileHomeHeader {
+    animation: mobileHomeRise 520ms 60ms cubic-bezier(0.16, 0.84, 0.24, 1) both;
+  }
+
+  .mobileIdentity {
+    animation: mobileHomeRise 560ms 130ms cubic-bezier(0.16, 0.84, 0.24, 1) both;
+  }
+
+  .mobileGrid button {
+    animation: mobileIconIn 520ms cubic-bezier(0.16, 0.9, 0.2, 1.18) both;
+  }
+
+  .mobileGrid button:nth-child(1) { animation-delay: 190ms; }
+  .mobileGrid button:nth-child(2) { animation-delay: 235ms; }
+  .mobileGrid button:nth-child(3) { animation-delay: 280ms; }
+  .mobileGrid button:nth-child(4) { animation-delay: 325ms; }
+  .mobileGrid button:nth-child(5) { animation-delay: 370ms; }
+
+  .mobileGrid button .appGlyph {
+    transition: filter 160ms ease, transform 180ms cubic-bezier(0.2, 0.85, 0.25, 1.35), box-shadow 180ms ease;
+    will-change: transform;
+  }
+
+  .mobileGrid button:active .appGlyph {
+    filter: brightness(0.92) saturate(1.08);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 0.2rem 0.5rem rgba(30, 50, 80, 0.16);
+    transform: scale(0.86);
+  }
+
+  .mobileGrid button:focus-visible {
+    outline: 2px solid rgba(37, 99, 235, 0.75);
+    outline-offset: 0.35rem;
+  }
+
+  .mobilePageIndicator {
+    animation: mobileHomeRise 460ms 420ms ease-out both;
+  }
+
+  .mobilePageIndicator i:first-child {
+    animation: mobilePagePulse 2.8s 900ms ease-in-out infinite;
+  }
+
+  .mobileAppView {
+    animation: mobileAppLaunch 340ms cubic-bezier(0.18, 0.86, 0.2, 1) both;
+    transform-origin: center 68%;
+    will-change: border-radius, opacity, transform;
+  }
+
+  .mobileAppView .mobileAppHeader {
+    animation: mobileChromeIn 360ms 90ms ease-out both;
+  }
+
+  .mobileAppView .mobileAppHeader > div {
+    animation: mobileTitleIn 400ms 120ms cubic-bezier(0.16, 0.9, 0.25, 1.15) both;
+  }
+
+  .mobileAppView .mobileAppBody > * {
+    animation: mobileContentIn 420ms 110ms cubic-bezier(0.2, 0.82, 0.2, 1) both;
+  }
+
+  .mobileAppHeader > button {
+    border-radius: 0.55rem;
+    transition: background 150ms ease, transform 150ms ease;
+  }
+
+  .mobileAppHeader > button:active {
+    background: rgba(37, 99, 235, 0.09);
+    transform: scale(0.92);
+  }
+
+  .mobileAppClosing {
+    animation: mobileAppDismiss 240ms cubic-bezier(0.4, 0, 0.8, 0.2) forwards;
+    pointer-events: none;
+  }
+
+  .mobileAppClosing .mobileAppHeader,
+  .mobileAppClosing .mobileAppHeader > div,
+  .mobileAppClosing .mobileAppBody > * {
+    animation: none;
+  }
+
+  .homeIndicator {
+    animation: mobileIndicatorIn 420ms 280ms ease-out both;
+    transition: opacity 180ms ease, transform 180ms ease;
+  }
+}
+
+@keyframes mobileAuraOne {
+  from { transform: translate3d(-0.4rem, -0.25rem, 0) scale(0.98); }
+  to { transform: translate3d(1.1rem, 0.8rem, 0) scale(1.06); }
+}
+
+@keyframes mobileAuraTwo {
+  from { transform: translate3d(0.5rem, 0.6rem, 0) scale(1.03); }
+  to { transform: translate3d(-1rem, -0.7rem, 0) scale(0.96); }
+}
+
+@keyframes mobileStatusIn {
+  from { opacity: 0; transform: translateY(-0.35rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mobileSignalIn {
+  from { opacity: 0; transform: scaleY(0.2); }
+  to { opacity: 1; transform: scaleY(1); }
+}
+
+@keyframes mobileHomeRise {
+  from { opacity: 0; transform: translateY(1rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mobileIconIn {
+  0% { opacity: 0; transform: translateY(1.15rem) scale(0.78); }
+  70% { opacity: 1; transform: translateY(-0.12rem) scale(1.035); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes mobilePagePulse {
+  0%, 100% { opacity: 0.82; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.28); }
+}
+
+@keyframes mobileAppLaunch {
+  0% { border-radius: 2.75rem; opacity: 0; transform: translateY(2.4rem) scale(0.86); }
+  72% { border-radius: 0.7rem; opacity: 1; transform: translateY(-0.18rem) scale(1.008); }
+  100% { border-radius: 0; opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes mobileChromeIn {
+  from { opacity: 0; transform: translateY(-0.55rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mobileTitleIn {
+  from { opacity: 0; transform: scale(0.86); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes mobileContentIn {
+  from { opacity: 0; transform: translateY(0.8rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mobileAppDismiss {
+  from { border-radius: 0; opacity: 1; transform: translateY(0) scale(1); }
+  to { border-radius: 2.4rem; opacity: 0; transform: translateY(2rem) scale(0.9); }
+}
+
+@keyframes mobileIndicatorIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(0.4rem) scaleX(0.72); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0) scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobileShell::before,
+  .mobileShell::after,
+  .mobileStatus > time,
+  .mobileStatus > div i,
+  .mobileHomeHeader,
+  .mobileIdentity,
+  .mobileGrid button,
+  .mobilePageIndicator,
+  .mobilePageIndicator i:first-child,
+  .mobileAppView,
+  .mobileAppView .mobileAppHeader,
+  .mobileAppView .mobileAppHeader > div,
+  .mobileAppView .mobileAppBody > *,
+  .homeIndicator {
+    animation: none !important;
+  }
+
+  .mobileGrid button .appGlyph,
+  .mobileAppHeader > button,
+  .homeIndicator {
+    transition: none;
+  }
+}
+
+/* Final mobile motion overrides intentionally come last in the cascade. */
+@media (max-width: 760px) {
+  .mobileShell::before,
+  .mobileShell::after,
+  .mobileStatus > time,
+  .mobileStatus > div i,
+  .mobilePageIndicator,
+  .mobilePageIndicator i:first-child,
+  .homeIndicator {
+    animation: none;
+    will-change: auto;
+  }
+
+  .mobileHome {
+    transition: filter 440ms cubic-bezier(0.22, 1, 0.36, 1), opacity 440ms ease, transform 440ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: center center;
+  }
+
+  .mobileHome[inert] {
+    filter: brightness(0.84) blur(0.7px);
+    opacity: 0.82;
+    transform: scale(0.955);
+  }
+
+  .mobileHomeRestoring.mobileHome[inert] {
+    filter: none;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .mobileGrid button {
+    animation: mobileIconSettle 380ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .mobileGrid button:active .appGlyph {
+    filter: brightness(0.94) saturate(1.03);
+    transform: scale(0.9);
+  }
+
+  .mobileAppView {
+    --app-clip-top: 52%;
+    --app-clip-right: 80%;
+    --app-clip-bottom: 41%;
+    --app-clip-left: 5%;
+    animation: mobileIosOpen 460ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    transform-origin: center center;
+    will-change: clip-path, opacity, transform;
+  }
+
+  .mobileAppView[data-mobile-app="about"] { --app-clip-right: 80%; --app-clip-left: 5%; }
+  .mobileAppView[data-mobile-app="projects"] { --app-clip-right: 55%; --app-clip-left: 30%; }
+  .mobileAppView[data-mobile-app="certificates"] { --app-clip-right: 30%; --app-clip-left: 55%; }
+  .mobileAppView[data-mobile-app="resume"] { --app-clip-right: 5%; --app-clip-left: 80%; }
+
+  .mobileAppView[data-mobile-app="contact"] {
+    --app-clip-top: 66%;
+    --app-clip-right: 80%;
+    --app-clip-bottom: 27%;
+    --app-clip-left: 5%;
+  }
+
+  .mobileAppView:not(.mobileAppClosing) .mobileAppHeader,
+  .mobileAppView:not(.mobileAppClosing) .mobileAppBody > * {
+    animation: mobileIosContentIn 260ms 90ms ease-out both;
+  }
+
+  .mobileAppHeader {
+    position: relative;
+    min-height: calc(3.25rem + env(safe-area-inset-top));
+    padding: max(0.35rem, env(safe-area-inset-top)) 0.8rem 0.35rem;
+    grid-template-columns: 1fr auto 1fr;
+    border-bottom: 1px solid rgba(60, 60, 67, 0.14);
+    background: rgba(249, 249, 251, 0.88);
+    box-shadow: none;
+    backdrop-filter: blur(24px) saturate(1.25);
+  }
+
+  .mobileAppHeader > button {
+    min-height: 2.65rem;
+    padding: 0.4rem 0.35rem;
+    justify-self: start;
+    border-radius: 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 620;
+    letter-spacing: -0.01em;
+  }
+
+  .mobileAppHeader > button span {
+    margin-right: 0.05rem;
+    font-size: 1.45rem;
+    font-weight: 430;
+    vertical-align: -0.08rem;
+  }
+
+  .mobileAppTitle {
+    grid-column: 2;
+    justify-self: center;
+    color: #1c1c1e;
+    font-size: 0.9rem;
+    font-weight: 680;
+    letter-spacing: -0.018em;
+    white-space: nowrap;
+  }
+
+  .mobileAppHeader > span:last-child { grid-column: 3; }
+
+  .mobileAppBody {
+    overscroll-behavior: contain;
+    scrollbar-width: none;
+  }
+
+  .mobileAppBody::-webkit-scrollbar { display: none; }
+
+  .mobileAppClosing {
+    animation: mobileIosClose 390ms cubic-bezier(0.4, 0, 0.8, 0.2) forwards;
+    pointer-events: none;
+  }
+
+  .mobileAppClosing .mobileAppHeader,
+  .mobileAppClosing .mobileAppBody > * {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobileHome,
+  .mobileGrid button,
+  .mobileAppView,
+  .mobileAppView .mobileAppHeader,
+  .mobileAppView .mobileAppBody > * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .mobileHome[inert] {
+    filter: none;
+    opacity: 1;
+    transform: none;
+  }
+}

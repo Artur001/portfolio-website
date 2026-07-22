@@ -1,53 +1,60 @@
-# Artur's Portfolio Hub 🚀
+# Portfolio — Artur Bytyqi
 
-Willkommen in meinem persönlichen Portfolio-Repository! Diese Website dient als meine digitale Visitenkarte. Sie zeigt meine aktuellen Projekte, meine Fähigkeiten im Bereich der Applikationsentwicklung und ein bisschen mehr über mich.
+Persönliches Portfolio für die Suche nach einem Praxisjahr in der Applikationsentwicklung 2026/27.
 
-## 🌟 Features
+## Inhalt
 
-- **Modernes UI/UX-Design:** Dunkles Theme, Glassmorphism-Effekte und flüssige Übergänge.
-- **Responsive:** Optimiert für Smartphones, Tablets und Desktops.
-- **Projekt-Showcase:** Übersichtliche Darstellung meiner besten Projekte mit Direktlinks zum Quellcode.
-- **Dynamische Animationen:** Subtile Einblendungen und Hover-Effekte dank Framer Motion.
+- Responsive „Artur OS“-Startseite mit Desktop-Arbeitsfläche und mobilem Home-Screen
+- Interaktive Apps für Profil, Projekte, Zertifikate, Lebenslauf und Kontakt
+- Desktop-Fenster mit Fokus, Minimieren und Schliessen sowie direkter App-Verlinkung über URL-Fragmente
+- Projektübersicht mit Screenshots aus den tatsächlich laufenden Anwendungen und aktuellen CLI-Texten
+- Detailseiten unter `/projekte/[slug]` mit aktuellem Stand und offenen Punkten
+- Öffentlicher, datensparsamer Lebenslauf unter `/lebenslauf`
+- Semantisches HTML, sichtbare Fokuszustände und Reduced-Motion-Unterstützung
+- Eigenes Open-Graph-Bild im Artur-OS-Stil
 
-## 🛠️ Tech Stack
+## Technologie
 
-Dieses Projekt wurde mit modernsten Web-Technologien entwickelt, um höchste Performance und Skalierbarkeit zu gewährleisten:
+- Next.js 16 (App Router)
+- React 19
+- TypeScript
+- Plain CSS mit Geist und Geist Mono über `next/font`
 
-- **Framework:** [Next.js](https://nextjs.org/) (React)
-- **Sprache:** TypeScript
-- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-- **Animationen:** [Framer Motion](https://www.framer.com/motion/)
-- **Datenbank:** Supabase (PostgreSQL)
+Die Website benötigt keine Datenbank. Die OS-Oberfläche läuft als gezielte Client-Komponente; Projektseiten und Lebenslauf bleiben statisch vorgerendert.
 
-## 🚀 Lokale Installation
+## Lokal starten
 
-Möchtest du dir den Code lokal ansehen oder daran herumbasteln? So startest du das Projekt bei dir:
+```bash
+npm install
+npm run dev
+```
 
-1. **Repository klonen:**
-   ```bash
-   git clone https://github.com/Artur001/portfolio-website.git
-   cd portfolio-website
-   ```
+Anschliessend [http://localhost:3000](http://localhost:3000) öffnen.
 
-2. **Abhängigkeiten installieren:**
-   ```bash
-   npm install
-   ```
+## Qualität prüfen
 
-3. **Entwicklungsserver starten:**
-   ```bash
-   npm run dev
-   ```
+```bash
+npm run check
+```
 
-4. Öffne [http://localhost:3000](http://localhost:3000) in deinem Browser.
+Der Befehl führt ESLint, den TypeScript-Check und den Produktions-Build aus.
 
-## 📫 Kontakt
+## Lebenslauf-PDF aktualisieren
 
-Ich bin immer offen für spannende Projekte, neue Kontakte und aktuell auf der Suche nach einem **Software Engineering Praktikum** ab Sommer 2026.
+Der Download unter `public/Artur-Bytyqi-Lebenslauf.pdf` wird aus einem kleinen
+Python-Skript erzeugt. Private Angaben und Dokumentnummern sind darin bewusst
+nicht enthalten. Die semantische HTML-Seite unter `/lebenslauf` ist die
+zugängliche Screenreader-Version; der visuelle Einseiter ist noch kein
+vollständig getaggtes PDF/UA-Dokument.
 
-- **Email:** [bytyqiartur00@gmail.com](mailto:bytyqiartur00@gmail.com)
-- **LinkedIn:** [Artur Bytyqi](https://www.linkedin.com/in/artur-bytyqi-0982212a2)
-- **GitHub:** [@Artur001](https://github.com/Artur001)
+```bash
+python -m pip install -r requirements-resume.txt
+python scripts/generate_resume.py
+```
 
----
-*Entwickelt mit ❤️ und viel Kaffee von Artur Bytyqi.*
+Unter Windows verwendet der Generator Arial, wenn die Schrift vorhanden ist.
+Auf anderen Systemen fÃ¤llt er auf die in ReportLab enthaltene Helvetica zurÃ¼ck.
+
+## Deployment
+
+Das Repository ist mit dem Vercel-Projekt `portfolio-website` verbunden. Änderungen auf dem Produktionsbranch können über die bestehende Git-Integration veröffentlicht werden.

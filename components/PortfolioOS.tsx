@@ -522,13 +522,7 @@ export function PortfolioOS() {
     setClosingApps((current) => current.filter((item) => item !== app));
     setMinimizingApps((current) => current.filter((item) => item !== app));
     setOpenApps((current) => [...current.filter((item) => item !== app), app]);
-    setMinimizedApps((current) => {
-      const nextMinimized = new Set(current.filter((item) => item !== app));
-      openApps.forEach((openAppId) => {
-        if (openAppId !== app) nextMinimized.add(openAppId);
-      });
-      return [...nextMinimized];
-    });
+    setMinimizedApps((current) => current.filter((item) => item !== app));
     setStartOpen(false);
   }
 

@@ -143,8 +143,7 @@ function ProjectPreview({ visual, title }: { visual: (typeof projects)[number]["
         alt={screenshot.alt}
         width={screenshot.width}
         height={screenshot.height}
-        loading="eager"
-        sizes="(max-width: 760px) 90vw, 34vw"
+        sizes="(max-width: 760px) 90vw, (max-width: 1120px) calc(100vw - 11rem), 24rem"
       />
     </div>
   );
@@ -228,7 +227,7 @@ function ProjectsApp() {
                 ))}
               </div>
               <div className={styles.inlineActions}>
-                <Link href={`/projekte/${project.slug}`}>
+                <Link href={`/projekte/${project.slug}`} prefetch={false}>
                   Case Study öffnen <span aria-hidden="true">→</span>
                 </Link>
                 {project.links[0] ? (

@@ -17,6 +17,16 @@ type AppId = "about" | "projects" | "certificates" | "resume" | "contact";
 
 const appOrder: AppId[] = ["about", "projects", "certificates", "resume", "contact"];
 
+function clearAppHash() {
+  if (!window.location.hash) return;
+
+  window.history.replaceState(
+    window.history.state,
+    "",
+    `${window.location.pathname}${window.location.search}`,
+  );
+}
+
 type WindowPosition = { x: number; y: number };
 type WindowSize = { width: number; height: number };
 
@@ -708,6 +718,8 @@ export function PortfolioOS() {
   function closeMobileApp() {
     if (!mobileApp || mobileClosing) return;
 
+    clearAppHash();
+
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setMobileApp(null);
       setMobileClosing(false);
@@ -721,6 +733,11 @@ export function PortfolioOS() {
       mobileAnimationTimerRef.current = null;
     }, 390);
   }
+
+  const activeDesktopApp = openApps
+    .slice()
+    .reverse()
+    .find((app) => !minimizedApps.includes(app));
 
   return (
     <main id="main-content" className={styles.portfolioOS}>
@@ -752,7 +769,7 @@ export function PortfolioOS() {
           {openApps.map((app, index) => {
             const minimized = minimizedApps.includes(app);
             const maximized = maximizedApps.includes(app);
-            const active = index === openApps.length - 1 && !minimized;
+            const active = app === activeDesktopApp;
             const closing = closingApps.includes(app);
             const minimizing = minimizingApps.includes(app);
             const position = windowPositions[app];
@@ -855,7 +872,7 @@ export function PortfolioOS() {
           <div className={styles.taskbarApps}>
             {appOrder.map((app) => {
               const isOpen = openApps.includes(app);
-              const isActive = openApps.at(-1) === app && !minimizedApps.includes(app);
+              const isActive = activeDesktopApp === app;
               return (
                 <button
                   key={app}

@@ -10,7 +10,7 @@
   width: 100%;
   height: 100svh;
   min-height: 38rem;
-  overflow: hidden;
+  overflow: clip;
   color: var(--os-ink);
   background: #dfe9f7;
   font-family: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
@@ -42,6 +42,7 @@
 }
 
 .desktopShell {
+  overflow: clip;
   background:
     radial-gradient(circle at 72% 12%, rgba(255, 255, 255, 0.82), transparent 21rem),
     radial-gradient(circle at 56% 56%, rgba(170, 210, 255, 0.58), transparent 30rem),
